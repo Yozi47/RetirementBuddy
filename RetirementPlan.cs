@@ -99,6 +99,7 @@ namespace RetirementBuddy
                     CalculateYearlyAmountReceivedWithSSA(age, beginingBal), CalculateExtraAmountRequiredByRMD(beginingBal, age));
 
                 beginingBal = CalculateEndTaxableRetirementBalance(beginingBal,age);
+                endRetirementBalance = CalculateEndTaxableRetirementBalance(beginingBal, age);
                 age++;
                 year++;
 
@@ -114,9 +115,11 @@ namespace RetirementBuddy
             while (age <= 100 && endRetirementBalance > 0)
             {
 
-                retirementSavings.Add(age, CalculateRetirementSavingContribution(age));
-                retirementYearlyIncome.Add(age, CalculateDesiredRetIncome(age));
+                retirementSavings.Add(age, endRetirementBalance);
+                retirementYearlyIncome.Add(age, CalculateSSAIncome(age) + CalculateRetAccountWithdrawals(age, beginingBal));
 
+                beginingBal = CalculateEndTaxableRetirementBalance(beginingBal, age);
+                endRetirementBalance = CalculateEndTaxableRetirementBalance(beginingBal, age);
                 age++;
 
             }

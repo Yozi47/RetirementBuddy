@@ -401,9 +401,9 @@ namespace RetirementBuddy
                                  salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
                                      lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
                                          atYear, incrementEveryYearCheck, scenario);
-            //GridView1.DataSource = aPlan.Calculate();
-            //GridView1.DataBind();
-            if(aPlan.CalculateTotalRetirementBalance() > 0)
+            GridView1.DataSource = aPlan.GenerateTable();
+            GridView1.DataBind();
+            if (aPlan.CalculateTotalRetirementBalance() > 0)
             {
                 ListOfPlans.Save(aPlan);
                 SeeComparisonsAndGraphsButton.Visible = true;

@@ -13,5 +13,32 @@ namespace RetirementBuddy
 
     public partial class ComparisonsAndGraphs
     {
+
+        /// <summary>
+        /// RetirementSavingsChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart RetirementSavingsChart;
+
+        /// <summary>
+        /// YearlyIncomeChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image YearlyIncomeChart;
+
+        /// <summary>
+        /// ColumnChartTotalRetirementAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ColumnChartTotalRetirementAmount;
     }
 }

@@ -7,15 +7,18 @@
     <h3>Your application description page.</h3>
     <p>Use this area to provide additional information.</p>
 
-    <div>
-        <asp:Chart runat="server">
-            <Series>
-                <asp:Series Name="Series1"></asp:Series>
-            </Series>
+    <div style="height: 300px; width: 1072px">
+        <asp:Chart ID="RetirementSavingsChart" runat="server">
             <ChartAreas>
                 <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
-
+<%--        <asp:Chart ID="RetirementSavingsChart" runat="server" />--%>
+    </div>
+    <div style="height: 300px; width: 1072px">
+        <asp:Image ID="YearlyIncomeChart" runat="server" />
+    </div>
+    <div style="height: 300px; width: 1072px">
+        <asp:Image ID="ColumnChartTotalRetirementAmount" runat="server" />
     </div>
 </asp:Content>
