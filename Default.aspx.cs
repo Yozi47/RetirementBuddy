@@ -10,7 +10,7 @@ namespace RetirementBuddy
 {
     public partial class _Default : Page
     {
-        public List<RetirementPlan> Plans;
+        readonly RetirementPlansSingleton ListOfPlans = RetirementPlansSingleton.Instance;
         string name;
         int age;
         decimal nestEgg;
@@ -32,117 +32,121 @@ namespace RetirementBuddy
         bool incrementEveryYearCheck;
 
         string scenario;
-        RetirementPlan aPlan;
+        RetirementPlan aPlan ;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Name"] != null)
+            if (!IsPostBack)
             {
-                name = Session["Name"].ToString();
+                Validate();
             }
-            if (Session["Age"] != null)
+            else
             {
-                age = int.Parse(Session["Age"].ToString());
-            }
+                if (Session["Name"] != null)
+                {
+                    name = Session["Name"].ToString();
+                }
+                if (Session["Age"] != null)
+                {
+                    age = int.Parse(Session["Age"].ToString());
+                }
 
-            if (Session["Scenario"] != null)
-            {
-                scenario = Session["Scenario"].ToString();
-            }
+                if (Session["Scenario"] != null)
+                {
+                    scenario = Session["Scenario"].ToString();
+                }
 
-            if (Session["NestEgg"] != null)
-            {
-                nestEgg = Decimal.Parse(Session["NestEgg"].ToString());
-            }
+                if (Session["NestEgg"] != null)
+                {
+                    nestEgg = Decimal.Parse(Session["NestEgg"].ToString());
+                }
 
-            if (Session["RoR"] != null)
-            {
-                rOR = double.Parse(Session["RoR"].ToString());
-            }
+                if (Session["RoR"] != null)
+                {
+                    rOR = double.Parse(Session["RoR"].ToString());
+                }
 
-            if (Session["CurrentSalary"] != null)
-            {
-                currentSalary = Decimal.Parse(Session["CurrentSalary"].ToString());
+                if (Session["CurrentSalary"] != null)
+                {
+                    currentSalary = Decimal.Parse(Session["CurrentSalary"].ToString());
 
-            }
-            if (Session["YearlyContribution"] != null)
-            {
-                yearlyContribution = Decimal.Parse(Session["YearlyContribution"].ToString());
+                }
+                if (Session["YearlyContribution"] != null)
+                {
+                    yearlyContribution = Decimal.Parse(Session["YearlyContribution"].ToString());
 
-            }
+                }
 
-            if (Session["PercentageCheck"] != null)
-            {
-                percentageCheck = Convert.ToBoolean(Session["PercentageCheck"]);
+                if (Session["PercentageCheck"] != null)
+                {
+                    percentageCheck = Convert.ToBoolean(Session["PercentageCheck"]);
 
-            }
+                }
 
-            if (Session["RetirementAge"] != null)
-            {
-                retirementAge = int.Parse(Session["RetirementAge"].ToString());
-            }
+                if (Session["RetirementAge"] != null)
+                {
+                    retirementAge = int.Parse(Session["RetirementAge"].ToString());
+                }
 
-            if (Session["SalaryIncrement%"] != null)
-            {
-                salaryIncrementPrecentage = double.Parse(Session["SalaryIncrement%"].ToString());
+                if (Session["SalaryIncrement%"] != null)
+                {
+                    salaryIncrementPrecentage = double.Parse(Session["SalaryIncrement%"].ToString());
 
-            }
-            if (Session["RetirementSalary"] != null)
-            {
-                retirementSalary = Decimal.Parse(Session["RetirementSalary"].ToString());
+                }
+                if (Session["RetirementSalary"] != null)
+                {
+                    retirementSalary = Decimal.Parse(Session["RetirementSalary"].ToString());
 
+                }
+
+                if (Session["DontSlowDownExpensesCheck"] != null)
+                {
+                    dontSlowDownExpensesCheck = Convert.ToBoolean(Session["DontSlowDownExpensesCheck"]);
+                }
+
+                if (Session["LessActiveAge"] != null)
+                {
+                    lessActiveAge = int.Parse(Session["LessActiveAge"].ToString());
+                }
+                if (Session["LessActiveStartingSalary"] != null)
+                {
+                    lessActiveStartingSalary = decimal.Parse(Session["LessActiveStartingSalary"].ToString());
+                }
+
+                if (Session["InflationRate"] != null)
+                {
+                    inflationRate = double.Parse(Session["InflationRate"].ToString());
+                }
+
+                if (Session["COLAInflationRate"] != null)
+                {
+                    cOLA_InflationRate = double.Parse(Session["COLAInflationRate"].ToString());
+                }
+
+                if (Session["RetirementBalance"] != null)
+                {
+                    retirementBalance = decimal.Parse(Session["RetirementBalance"].ToString());
+                }
+
+                if (Session["AdditionalPayment"] != null)
+                {
+                    additionalPayment = Decimal.Parse(Session["AdditionalPayment"].ToString());
+
+                }
+                if (Session["AtYear"] != null)
+                {
+                    atYear = int.Parse(Session["AtYear"].ToString());
+
+                }
+
+                if (Session["IncrementEveryYearCheck"] != null)
+                {
+                    incrementEveryYearCheck = Convert.ToBoolean(Session["IncrementEveryYearCheck"]);
+
+                }
             }
             
-            if (Session["DontSlowDownExpensesCheck"] != null)
-            {
-                dontSlowDownExpensesCheck = Convert.ToBoolean(Session["DontSlowDownExpensesCheck"]);
-            }
-
-            if (Session["LessActiveAge"] != null)
-            {
-                lessActiveAge = int.Parse(Session["LessActiveAge"].ToString());
-            }
-            if (Session["LessActiveStartingSalary"] != null)
-            {
-                lessActiveStartingSalary = decimal.Parse(Session["LessActiveStartingSalary"].ToString());
-            }
-
-            if (Session["InflationRate"] != null)
-            {
-                inflationRate = double.Parse(Session["InflationRate"].ToString());
-            }
-
-            if (Session["COLAInflationRate"] != null)
-            {
-                cOLA_InflationRate = double.Parse(Session["COLAInflationRate"].ToString());
-            }
-
-            if (Session["RetirementBalance"] != null)
-            {
-                retirementBalance = decimal.Parse(Session["RetirementBalance"].ToString());
-            }
-
-            if (Session["AdditionalPayment"] != null)
-            {
-                additionalPayment = Decimal.Parse(Session["AdditionalPayment"].ToString());
-
-            }
-            if (Session["AtYear"] != null)
-            {
-                atYear = int.Parse(Session["AtYear"].ToString());
-
-            }
-
-            if (Session["IncrementEveryYearCheck"] != null)
-            {
-                incrementEveryYearCheck = Convert.ToBoolean(Session["IncrementEveryYearCheck"]);
-
-            }
-            aPlan = new RetirementPlan(name, age, nestEgg, rOR, currentSalary, yearlyContribution, percentageCheck,
-                                 salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
-                                     lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
-                                         atYear, incrementEveryYearCheck, scenario);
-            Plans = new List<RetirementPlan>();
+            
         }
         protected void NameBox_TextChanged(object sender, EventArgs e)
         {
@@ -340,6 +344,10 @@ namespace RetirementBuddy
 
         protected void TotalRetirementBalanceButton_Click(object sender, EventArgs e)
         {
+            aPlan = new RetirementPlan(name, age, nestEgg, rOR, currentSalary, yearlyContribution, percentageCheck,
+                                 salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
+                                     lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
+                                         atYear, incrementEveryYearCheck, scenario);
             RetirementBalanceBox.Text = aPlan.CalculateTotalRetirementBalance().ToString();
             Session["RetirementBalance"] = RetirementBalanceBox.Text;
         }
@@ -389,9 +397,18 @@ namespace RetirementBuddy
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = aPlan.Calculate();
-            GridView1.DataBind();
-            Plans.Add(aPlan);
+            aPlan = new RetirementPlan(name, age, nestEgg, rOR, currentSalary, yearlyContribution, percentageCheck,
+                                 salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
+                                     lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
+                                         atYear, incrementEveryYearCheck, scenario);
+            //GridView1.DataSource = aPlan.Calculate();
+            //GridView1.DataBind();
+            if(aPlan.CalculateTotalRetirementBalance() > 0)
+            {
+                ListOfPlans.Save(aPlan);
+                SeeComparisonsAndGraphsButton.Visible = true;
+            }
+
 
         }
 
@@ -422,9 +439,16 @@ namespace RetirementBuddy
             P1.Visible = false;
             P2.Visible = false;
             P3.Visible = false;
+
+            GridView1.DataSource = null;
+            GridView1.DataBind();
             Session.Clear();
         }
 
+        protected void SeeComparisonsAndGraphsButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ComparisonsAndGraphs.aspx");
+        }
     }
 }
 

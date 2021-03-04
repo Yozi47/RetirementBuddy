@@ -58,14 +58,14 @@
         </div>
         </div>
 
-        <div style="height: 84px; width: 443px;">
-        <div style="height: 21px; width: 160px; margin-left: 9px; margin-top: 19px;">
+        <div style="height: 88px; width: 443px; margin-top: 0px;">
+        <div style="height: 19px; width: 160px; margin-left: 9px; margin-top: 15px;">
             <asp:Label ID="Label13" runat="server" Text="Yearly Contribution"></asp:Label>
         </div>
         <div style="height: 0px; margin-top: -22px; width: 223px; margin-left: 200px;">          
             <asp:TextBox ID="YearlyContriBox" runat="server" Height="20px" Width="176px" OnTextChanged="YearlyContriBox_TextChanged" ></asp:TextBox>
         </div>
-        <div style="height: 23px; margin-top: 9px; width: 223px; margin-left: 83px;">          
+        <div style="height: 25px; margin-top: 25px; width: 176px; margin-left: 83px;">          
             <asp:CheckBox ID="PercentageCheckBox" runat="server" Text=" Apply as percentage? " AutoPostBack="True" TextAlign="Left" OnCheckedChanged="PercentageCheckBox_CheckedChanged" />
         </div>
 
@@ -101,8 +101,8 @@
 
 
         <div style="height: 80px; width: 443px;">
-        <div style="height: 25px; margin-top: 9px; width: 259px; margin-left: 83px;">          
-            <asp:CheckBox ID="DontSlowDownExpensesCheckBox" runat="server" Text=" Don't Slow down expenses after? " AutoPostBack="True" TextAlign="Left" OnCheckedChanged="DontSlowDownExpensesCheckBox_CheckedChanged" />
+        <div style="height: 25px; margin-top: 9px; width: 345px; margin-left: 40px;">          
+            <asp:CheckBox ID="DontSlowDownExpensesCheckBox" runat="server" Text=" Don't Slow down expenses after Active ages? " AutoPostBack="True" TextAlign="Left" OnCheckedChanged="DontSlowDownExpensesCheckBox_CheckedChanged" />
         </div>
         <div style="height: 20px; width: 160px; margin-left: 9px; margin-top: 14px;">
             <asp:Label ID="LessActiveAgeLabel" runat="server" Text="Less active at age:"></asp:Label>           
@@ -156,6 +156,10 @@
                 <p id ="P1" runat="server" style="background-color:aliceblue" visible ="false"></p>
                 <p id ="P2" runat="server" style="background-color:aliceblue" visible ="false"></p>
                 <p id ="P3" runat="server" style="background-color:aliceblue" visible ="false"></p>
+                <div style="width: 184px; margin-top: 8px; height: 25px; margin-left: 7px;">
+                    <asp:Button ID="SeeComparisonsAndGraphsButton" runat="server" Text="See Comparisons and Graph" Height="27px" Width="164px" OnClick="SeeComparisonsAndGraphsButton_Click" visible ="false"/>
+                </div>
+            
 
             </div>
         </div>

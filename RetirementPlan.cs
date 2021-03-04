@@ -84,7 +84,7 @@ namespace RetirementBuddy
             }
         }
 
-        public DataTable Calculate()
+        public DataTable GenerateTable()
         {
             decimal beginingBal = nestEgg;
             int year = currentYear;
@@ -98,15 +98,28 @@ namespace RetirementBuddy
                     CalculateDesiredRetIncome(age), CalculateSSAIncome(age), CalculateRetAccountWithdrawals(age, beginingBal), CalculateRMDFromSSA(beginingBal, age), CalculateEndTaxableRetirementBalance(beginingBal, age),
                     CalculateYearlyAmountReceivedWithSSA(age, beginingBal), CalculateExtraAmountRequiredByRMD(beginingBal, age));
 
-                retirementSavings.Add(age, CalculateRetirementSavingContribution(age));
-                retirementYearlyIncome.Add(age, CalculateDesiredRetIncome(age));
-
                 beginingBal = CalculateEndTaxableRetirementBalance(beginingBal,age);
                 age++;
                 year++;
 
             }
             return gridView;
+        }
+
+        public void FillChartData()
+        {
+            decimal beginingBal = nestEgg;
+            int age = currentAge;
+            decimal endRetirementBalance = CalculateEndTaxableRetirementBalance(beginingBal, age);
+            while (age <= 100 && endRetirementBalance > 0)
+            {
+
+                retirementSavings.Add(age, CalculateRetirementSavingContribution(age));
+                retirementYearlyIncome.Add(age, CalculateDesiredRetIncome(age));
+
+                age++;
+
+            }
         }
 
         public decimal CalculateTotalRetirementBalance()
@@ -287,12 +300,12 @@ namespace RetirementBuddy
         }
         public decimal CalculateSSAIncome(int age)
         {
-            double ssaPercentage = 0.25; // a constant value. Say 25% of the highest wage is starting ssa
+            decimal avgSSAPerYear = 20000; // a constant value. Say 25% of the highest wage is starting ssa
             int youGetSSAStartingAge = 62;
-            int compoundTimes = age - retirementAge;
+            int compoundTimes = age - youGetSSAStartingAge;
             if (age >= youGetSSAStartingAge)
             {
-                return (decimal)ssaPercentage * CalculateWageIncome(retirementAge -1) * (decimal)Math.Pow(1+(cOLA_InflationRate / 100), compoundTimes);
+                return avgSSAPerYear * (decimal)Math.Pow(1+(cOLA_InflationRate / 100), compoundTimes);
             }
             else
             {
