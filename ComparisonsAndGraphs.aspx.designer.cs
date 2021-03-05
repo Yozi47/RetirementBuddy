@@ -30,15 +30,33 @@ namespace RetirementBuddy
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image YearlyIncomeChart;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart YearlyIncomeChart;
 
         /// <summary>
-        /// ColumnChartTotalRetirementAmount control.
+        /// SavingSizeBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ColumnChartTotalRetirementAmount;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart SavingSizeBar;
+
+        /// <summary>
+        /// SeeRetirementTablesButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SeeRetirementTablesButton;
+
+        /// <summary>
+        /// GridViewPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel GridViewPanel;
     }
 }

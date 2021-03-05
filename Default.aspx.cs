@@ -348,7 +348,7 @@ namespace RetirementBuddy
                                  salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
                                      lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
                                          atYear, incrementEveryYearCheck, scenario);
-            RetirementBalanceBox.Text = aPlan.CalculateTotalRetirementBalance().ToString();
+            RetirementBalanceBox.Text = Math.Round(aPlan.CalculateTotalRetirementBalance(),2).ToString();
             Session["RetirementBalance"] = RetirementBalanceBox.Text;
         }
 
@@ -365,7 +365,7 @@ namespace RetirementBuddy
 
         protected void AtYearBox_TextChanged(object sender, EventArgs e)
         {
-            Session["AtYear"] = NestEggBox.Text;
+            Session["AtYear"] = AtYearBox.Text;
             if (!int.TryParse(Session["AtYear"].ToString(), out atYear))
             {
                 //Default Values
@@ -401,12 +401,17 @@ namespace RetirementBuddy
                                  salaryIncrementPrecentage, retirementAge, retirementSalary, dontSlowDownExpensesCheck, lessActiveAge,
                                      lessActiveStartingSalary, inflationRate, cOLA_InflationRate, retirementBalance, additionalPayment,
                                          atYear, incrementEveryYearCheck, scenario);
-            GridView1.DataSource = aPlan.GenerateTable();
-            GridView1.DataBind();
+            
             if (aPlan.CalculateTotalRetirementBalance() > 0)
             {
                 ListOfPlans.Save(aPlan);
                 SeeComparisonsAndGraphsButton.Visible = true;
+                P1.Visible = true;
+
+                StringBuilder content = new StringBuilder();
+                content.Append($"{aPlan.Scenario} saved.");
+
+                P1.InnerText = content.ToString();
             }
 
 
@@ -437,11 +442,8 @@ namespace RetirementBuddy
 
             IncEveryYearCheckBox.Checked = false;
             P1.Visible = false;
-            P2.Visible = false;
-            P3.Visible = false;
+           
 
-            GridView1.DataSource = null;
-            GridView1.DataBind();
             Session.Clear();
         }
 

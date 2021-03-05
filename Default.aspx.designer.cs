@@ -312,24 +312,6 @@ namespace RetirementBuddy
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl P1;
 
         /// <summary>
-        /// P2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl P2;
-
-        /// <summary>
-        /// P3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl P3;
-
-        /// <summary>
         /// SeeComparisonsAndGraphsButton control.
         /// </summary>
         /// <remarks>
@@ -400,14 +382,5 @@ namespace RetirementBuddy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ResetButton;
-
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

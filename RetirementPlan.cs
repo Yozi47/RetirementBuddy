@@ -98,8 +98,8 @@ namespace RetirementBuddy
                     CalculateDesiredRetIncome(age), CalculateSSAIncome(age), CalculateRetAccountWithdrawals(age, beginingBal), CalculateRMDFromSSA(beginingBal, age), CalculateEndTaxableRetirementBalance(beginingBal, age),
                     CalculateYearlyAmountReceivedWithSSA(age, beginingBal), CalculateExtraAmountRequiredByRMD(beginingBal, age));
 
-                beginingBal = CalculateEndTaxableRetirementBalance(beginingBal,age);
                 endRetirementBalance = CalculateEndTaxableRetirementBalance(beginingBal, age);
+                beginingBal = endRetirementBalance;
                 age++;
                 year++;
 
@@ -118,10 +118,10 @@ namespace RetirementBuddy
                 retirementSavings.Add(age, endRetirementBalance);
                 retirementYearlyIncome.Add(age, CalculateSSAIncome(age) + CalculateRetAccountWithdrawals(age, beginingBal));
 
-                beginingBal = CalculateEndTaxableRetirementBalance(beginingBal, age);
+                
                 endRetirementBalance = CalculateEndTaxableRetirementBalance(beginingBal, age);
+                beginingBal = CalculateEndTaxableRetirementBalance(beginingBal, age);
                 age++;
-
             }
         }
 
@@ -197,6 +197,7 @@ namespace RetirementBuddy
         private void CreateHeaderRow()
         {
             //Create columns for the gridView.
+
             gridView.Columns.Add("Year", typeof(int));
             gridView.Columns.Add("Age", typeof(int));
             gridView.Columns.Add("Begining Retirement Balance", typeof(decimal));

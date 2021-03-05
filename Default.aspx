@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RetirementBuddy._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="height: 703px; width: 810px; margin-left: 15%; margin-top: 20px; margin-right: 15%;">
+    <div style="height: 971px; width: 810px; margin-left: 15%; margin-top: 20px; margin-right: 15%;">
       
         <div style="height: 50px; width: 443px;">
         <div style="height: 21px; width: 160px; margin-left: 9px; margin-top: 19px;">
@@ -150,14 +150,13 @@
         </div>
         </div>
 
-        <div style="margin-left: 440px; margin-top: -300px;">
+        <div style="margin-left: 440px; margin-top: -700px; height: 703px;">
             <div style="height: 227px; width: 342px; margin-left: 16px; margin-top: 40px;">
               
-                <p id ="P1" runat="server" style="background-color:aliceblue" visible ="false"></p>
-                <p id ="P2" runat="server" style="background-color:aliceblue" visible ="false"></p>
-                <p id ="P3" runat="server" style="background-color:aliceblue" visible ="false"></p>
-                <div style="width: 184px; margin-top: 8px; height: 25px; margin-left: 7px;">
-                    <asp:Button ID="SeeComparisonsAndGraphsButton" runat="server" Text="See Comparisons and Graph" Height="27px" Width="164px" OnClick="SeeComparisonsAndGraphsButton_Click" visible ="false"/>
+                <p id ="P1" runat="server" style="background-color:aliceblue; height: 54px;" visible ="false"></p>
+                
+                <div style="width: 327px; margin-top: 66px; height: 499px; margin-left: 7px;">
+                    <asp:Button ID="SeeComparisonsAndGraphsButton" runat="server" Text="See Comparisons and Graph" Height="38px" Width="314px" OnClick="SeeComparisonsAndGraphsButton_Click" visible ="false"/>
                 </div>
             
 
@@ -172,7 +171,7 @@
         <div style="height: 0px; margin-top: -22px; width: 223px; margin-left: 200px;">          
             <asp:TextBox ID="AdditionalPaymentsBox" runat="server" Height="20px" Width="176px" OnTextChanged="AdditionalPaymentsBox_TextChanged" ></asp:TextBox>
         </div>
-        <div style="height: 21px; width: 96px; margin-left: 443px; margin-top: -25px;">
+        <div style="height: 21px; width: 96px; margin-left: 443px; margin-top: -20px;">
             <asp:Label ID="AtYearLabel" runat="server" Text="At Year : "></asp:Label>
             </div>
         <div style="height: 0px; margin-top: -22px; width: 101px; margin-left: 550px;">          
@@ -197,10 +196,7 @@
             </div>
         </div>        
 
-        <div style="margin-top: 10px;">
-                  
-            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-        </div>      
+         
 
     </div>
 </asp:Content>
